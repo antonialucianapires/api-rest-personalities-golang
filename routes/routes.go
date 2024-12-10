@@ -7,7 +7,10 @@ import (
 	"github.com/antonialucianapires/api-rest-crud-golang/controllers"
 )
 
+const prefix = "/api"
+
 func HandleRequest() {
-	http.HandleFunc("/ping", controllers.Ping)
-	log.Fatal(http.ListenAndServe(":8000", nil))
+    http.HandleFunc(prefix+"/ping", controllers.Ping)
+    http.HandleFunc(prefix+"/personalities", controllers.AllPersonalities)
+    log.Fatal(http.ListenAndServe(":8000", nil))
 }
