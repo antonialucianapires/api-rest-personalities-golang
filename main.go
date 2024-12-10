@@ -8,8 +8,8 @@ import (
 
 func main() {
 	models.Personalities = []models.Personality {
-		{Name: "Ada Lovelace", History: "Pioneira da programação e autora do primeiro algoritmo."},
-        {Name: "Alan Turing", History: "Fundador da ciência da computação e da criptoanálise moderna."},
+		{Id: 1, Name: "Ada Lovelace", History: "Pioneira da programação e autora do primeiro algoritmo."},
+        {Id: 2, Name: "Alan Turing", History: "Fundador da ciência da computação e da criptoanálise moderna."},
 	}
 	routes.HandleRequest()
 }
