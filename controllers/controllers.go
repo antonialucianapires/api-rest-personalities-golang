@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/antonialucianapires/api-rest-crud-golang/database"
 	"github.com/antonialucianapires/api-rest-crud-golang/models"
 	"github.com/gorilla/mux"
 )
@@ -15,7 +16,9 @@ func Ping(w http.ResponseWriter, r *http.Request) {
 }
 
 func AllPersonalities(w http.ResponseWriter, r *http.Request) {
-	json.NewEncoder(w).Encode(models.Personalities)
+	var personalities []models.Personality
+	database.DB.Find(&personalities)
+	json.NewEncoder(w).Encode(personalities)
 }
 
 func GetByPersonalityById(w http.ResponseWriter, r *http.Request) {
