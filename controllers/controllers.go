@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"strconv"
 
 	"github.com/antonialucianapires/api-rest-crud-golang/database"
 	"github.com/antonialucianapires/api-rest-crud-golang/models"
@@ -24,11 +23,7 @@ func AllPersonalities(w http.ResponseWriter, r *http.Request) {
 func GetByPersonalityById(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]
-	for _, personality := range models.Personalities {
-		if strconv.Itoa(personality.Id) == id {
-			json.NewEncoder(w).Encode(personality)
-			return
-		}
-	}
-
+	var personality models.Personality
+	database.DB.First(&personality, id)
+	json.NewEncoder(w).Encode(personality)
 }
