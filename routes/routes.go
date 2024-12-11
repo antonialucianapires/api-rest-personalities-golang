@@ -6,6 +6,7 @@ import (
 
 	"github.com/antonialucianapires/api-rest-crud-golang/controllers"
 	"github.com/antonialucianapires/api-rest-crud-golang/middleware"
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -20,5 +21,5 @@ func HandleRequest() {
 	r.HandleFunc(prefix+"/personalities", controllers.CreatePersonality).Methods("POST")
 	r.HandleFunc(prefix+"/personalities/{id}", controllers.DeletePersonality).Methods("DELETE")
 	r.HandleFunc(prefix+"/personalities/{id}", controllers.UpdtadePersonality).Methods("PUT")
-    log.Fatal(http.ListenAndServe(":8000", r))
+    log.Fatal(http.ListenAndServe(":8000", handlers.CORS(handlers.AllowedOrigins([]string{"*"}))(r)))
 }
