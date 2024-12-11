@@ -1,15 +1,12 @@
-### Variables
-@apiurl = http://127.0.0.1:8000/api
-@id = 1
 
 ### GET personalities
-GET {{apiurl}}/personalities HTTP/1.1
+GET http://127.0.0.1:8000/api/personalities HTTP/1.1
 
 ### GET personality by id
-GET {{apiurl}}/personalities/{{id}} HTTP/1.1
+GET http://127.0.0.1:8000/api/personalities/1 HTTP/1.1
 
 ### POST personalities
-POST {{apiurl}}/personalities HTTP/1.1
+POST http://127.0.0.1:8000/api/personalities HTTP/1.1
 Content-Type: application/json
 
 {
