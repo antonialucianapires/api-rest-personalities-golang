@@ -17,5 +17,6 @@ func HandleRequest() {
 	r.HandleFunc(prefix+"/personalities/{id}", controllers.GetByPersonalityById).Methods("GET")
 	r.HandleFunc(prefix+"/personalities", controllers.CreatePersonality).Methods("POST")
 	r.HandleFunc(prefix+"/personalities/{id}", controllers.DeletePersonality).Methods("DELETE")
+	r.HandleFunc(prefix+"/personalities/{id}", controllers.UpdtadePersonality).Methods("PUT")
     log.Fatal(http.ListenAndServe(":8000", r))
 }
